@@ -19,11 +19,21 @@ public class Main extends PluginBase {
     public void onEnable() {
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
+
         if (getConfig().getString("database").isEmpty() || getConfig().getString("collection").isEmpty()) {
             getLogger().error("Please edit config");
             getPluginLoader().disablePlugin(this);
             return;
         }
+
+        try {
+            Class.forName("PlayerAPI.Overrides.PlayerAPI");
+        } catch (ClassNotFoundException e) {
+            getLogger().error("PlayerAPI plugin must be enabled...");
+            getPluginLoader().disablePlugin(this);
+            return;
+        }
+
         instance = this;
     }
 
