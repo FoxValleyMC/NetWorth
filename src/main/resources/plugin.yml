@@ -1,0 +1,13 @@
+name: NetWorth
+author: iAtomPlaza
+version: 1.0.0
+api: 1.0.9
+main: NetWorth.Main
+softdepend:
+  - AliasPro
+depend:
+  - NukkitDB
+permissions:
+  networth.admin:
+    description: allows ussage of admin override commands
+    default: op

@@ -1,0 +1,5 @@
+database: ""
+collection: ""
+
+# default amount of money for new players
+default-balance: 5000
