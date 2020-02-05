@@ -3,10 +3,9 @@ author: iAtomPlaza
 version: 1.0.0
 api: 1.0.9
 main: NetWorth.Main
-softdepend:
-  - AliasPro
 depend:
   - NukkitDB
+  - PlayerAPI
 permissions:
   networth.admin:
     description: allows ussage of admin override commands
