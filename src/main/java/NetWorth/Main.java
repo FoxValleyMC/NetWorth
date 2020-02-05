@@ -25,15 +25,6 @@ public class Main extends PluginBase {
             getPluginLoader().disablePlugin(this);
             return;
         }
-
-        try {
-            Class.forName("PlayerAPI.Overrides.PlayerAPI");
-        } catch (ClassNotFoundException e) {
-            getLogger().error("PlayerAPI plugin must be enabled...");
-            getPluginLoader().disablePlugin(this);
-            return;
-        }
-
         instance = this;
     }
 
