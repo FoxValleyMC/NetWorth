@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'NetWorth'
-version '1.0.0'
+version '1.0.1'
 
 sourceCompatibility = 1.8
 
@@ -18,9 +18,8 @@ repositories {
 
 dependencies {
     implementation "cn.nukkit:nukkit:1.0-SNAPSHOT"
-    implementation "com.github.FoxValleyMC:NukkitDB:master-SNAPSHOT"
-    implementation "com.github.FoxValleyMC:AliasPro:master-SNAPSHOT"
-    implementation "com.github.FoxValleyMC:PlayerAPI:master-SNAPSHOT"
+    implementation "com.github.FoxValleyMC:NukkitDB:e8b0f9f365"
+    implementation "com.github.FoxValleyMC:PlayerAPI:59907ef2f2"
 }
 
 jar {
