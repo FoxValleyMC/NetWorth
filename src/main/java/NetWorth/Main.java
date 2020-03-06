@@ -20,7 +20,7 @@ public class Main extends PluginBase {
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
 
-        if (getConfig().getString("database").isEmpty() || getConfig().getString("collection").isEmpty()) {
+        if (!getConfig().getBoolean("use-MongoDB") || getConfig().getString("collection").isEmpty()) {
             getLogger().error("Please edit config");
             getPluginLoader().disablePlugin(this);
             return;

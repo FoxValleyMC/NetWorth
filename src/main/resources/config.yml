@@ -1,4 +1,4 @@
-database: ""
+use-MongoDB: false
 collection: ""
 
 # default amount of money for new players
