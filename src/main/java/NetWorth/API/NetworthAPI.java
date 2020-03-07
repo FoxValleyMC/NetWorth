@@ -1,36 +1,34 @@
 package NetWorth.API;
 
-import NukkitDB.NukkitDB;
+import NukkitDB.Provider.MongoDB;
 import cn.nukkit.Player;
 
 public class NetworthAPI {
 
     public static int getBalance(Player player) {
-        String database = NetWorth.Main.getInstance().getConfig().getString("database");
         String collection = NetWorth.Main.getInstance().getConfig().getString("collection");
         return Integer.parseInt(
-                NukkitDB.query(
-                        player.getUniqueId().toString(), "uuid", database, collection
+                MongoDB.getDocument(
+                        MongoDB.getCollection(collection), "uuid", player.getUniqueId().toString()
                 ).get("balance").toString()
         );
     }
 
     public static void setMoney(Player player, int amount) {
-        String database = NetWorth.Main.getInstance().getConfig().getString("database");
         String collection = NetWorth.Main.getInstance().getConfig().getString("collection");
-        NukkitDB.updateDocument(
-                player.getUniqueId().toString(), "uuid", "balance", amount, database, collection
+        String uuid = player.getUniqueId().toString();
+        MongoDB.updateOne(
+                MongoDB.getCollection(collection), "uuid", uuid, "balance", amount
         );
-
     }
 
     public static void addMoney(Player player, int amount) {
-        String database = NetWorth.Main.getInstance().getConfig().getString("database");
         String collection = NetWorth.Main.getInstance().getConfig().getString("collection");
         int currentBalance = getBalance(player);
         int newBalance = currentBalance + amount;
-        NukkitDB.updateDocument(
-                player.getUniqueId().toString(), "uuid", "balance", newBalance, database, collection
+        String uuid = player.getUniqueId().toString();
+        MongoDB.updateOne(
+                MongoDB.getCollection(collection), "uuid", uuid, "balance", newBalance
         );
     }
 
@@ -44,8 +42,9 @@ public class NetworthAPI {
         } else {
             newBalance = currentBalance - amount;
         }
-        NukkitDB.updateDocument(
-                player.getUniqueId().toString(), "uuid", "balance", newBalance, database, collection
+        String uuid = player.getUniqueId().toString();
+        MongoDB.updateOne(
+                MongoDB.getCollection(collection), "uuid", uuid, "balance", newBalance
         );
     }
 
